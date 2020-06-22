@@ -1,0 +1,159 @@
+<mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value">
+    <mat-drawer #drawer [mode]="mode.value">I'm a drawer
+
+        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+            <!-- This is the tree node template for leaf nodes -->
+            <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+              <!-- use a disabled button to provide padding for tree leaf -->
+              <button mat-icon-button disabled></button>
+              {{node.name}}
+            </mat-tree-node>
+            <!-- This is the tree node template for expandable nodes -->
+            <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+              <button mat-icon-button matTreeNodeToggle
+                      [attr.aria-label]="'toggle ' + node.name">
+                <mat-icon class="mat-icon-rtl-mirror">
+                  {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                </mat-icon>
+              </button>
+              {{node.name}}
+            </mat-tree-node>
+          </mat-tree>
+    </mat-drawer>
+    <mat-drawer-content>
+        <mat-toolbar>
+            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="drawer.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>Greetings Clyde!</span>
+            <span class="example-spacer"></span>
+            <form style="font-size: medium;">
+              <mat-form-field appearance="outline" style="margin-bottom: -1.25em">
+                <span matPrefix><mat-icon matSuffix>search</mat-icon> &nbsp;&nbsp;&nbsp;</span>
+                <input type="search" matInput>
+              </mat-form-field>
+            </form>
+            <span class="example-spacer"></span>
+              <button mat-button [matMenuTriggerFor]="menuProfile">
+                <mat-icon>person</mat-icon>
+                <span>Clyde Miles</span>
+              </button>
+              <mat-menu #menuProfile="matMenu" xPosition="before">
+                <button mat-menu-item>
+                  <mat-icon>edit</mat-icon>
+                  <span>Edit profile</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon>settings</mat-icon>
+                  <span>Logout</span>
+                </button>
+              </mat-menu>
+            <span>|</span>
+            <button mat-icon-button [matMenuTriggerFor]="menuSettings">
+              <mat-icon>settings</mat-icon>
+            </button>
+            <mat-menu #menuSettings="matMenu" xPosition="before">
+              <button mat-menu-item>
+                <mat-icon>settings</mat-icon>
+                <span>Settings</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>update</mat-icon>
+                <span>Update</span>
+              </button>
+            </mat-menu>
+
+            <button mat-icon-button [matMenuTriggerFor]="menuNotifications">
+              <mat-icon>notifications</mat-icon>
+            </button>
+            <mat-menu #menuNotifications="matMenu" xPosition="before">
+              <mat-list>
+                <div mat-subheader>
+                  <mat-icon>notifications</mat-icon>
+                  <span>Notifications</span>
+                </div>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                  <mat-icon mat-list-icon>mail</mat-icon>
+                  <div mat-line>You received a new message</div>
+                  <div mat-line>6 min ago</div>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-icon mat-list-icon>person</mat-icon>
+                  <div mat-line>New user registered</div>
+                  <div mat-line>15 min ago</div>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-icon mat-list-icon>error_outline</mat-icon>
+                  <div mat-line>System alert</div>
+                  <div mat-line>2 days ago</div>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-icon mat-list-icon>update</mat-icon>
+                  <div mat-line>You have a new update</div>
+                  <div mat-line>3 days ago</div>
+                </mat-list-item>
+              </mat-list>
+            </mat-menu>
+
+            <button mat-icon-button [matMenuTriggerFor]="menuMail">
+              <mat-icon matBadge="4" matBadgeColor="warn">mail</mat-icon>
+            </button>
+            <mat-menu #menuMail="matMenu" xPosition="before">
+              <mat-list>
+                <div mat-subheader>
+                  <mat-icon>mail</mat-icon>
+                  <span> Messages</span>
+                </div>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                  <mat-icon mat-list-icon>mail</mat-icon>
+                  <div mat-line>Mark send you a message</div>
+                  <div mat-line>1 min ago</div>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-icon mat-list-icon>person</mat-icon>
+                  <div mat-line>Jase send you a message</div>
+                  <div mat-line>15 min ago</div>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-icon mat-list-icon>error_outline</mat-icon>
+                  <div mat-line>Profile picture updated</div>
+                  <div mat-line>2 days ago</div>
+                </mat-list-item>
+              </mat-list>
+            </mat-menu>
+            <button mat-icon-button [matMenuTriggerFor]="menuExit">
+              <mat-icon>save_alt</mat-icon>
+            </button>
+            <mat-menu #menuExit="matMenu" xPosition="before">
+              <button mat-menu-item>
+                <mat-icon>lock</mat-icon>
+                <span>Lock screen</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Logout</span>
+              </button>
+            </mat-menu>
+        </mat-toolbar>
+      <mat-form-field>
+        <mat-label>Sidenav mode</mat-label>
+        <mat-select #mode value="side">
+          <mat-option value="side">Side</mat-option>
+          <mat-option value="over">Over</mat-option>
+          <mat-option value="push">Push</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Has backdrop</mat-label>
+        <mat-select #hasBackdrop>
+          <mat-option>Unset</mat-option>
+          <mat-option [value]="true">True</mat-option>
+          <mat-option [value]="false">False</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button>
+      <div style="height: 100vh; width:100px;"></div>
+    </mat-drawer-content>
+  </mat-drawer-container>
