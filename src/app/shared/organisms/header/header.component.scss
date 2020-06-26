@@ -1,16 +1,5 @@
-.example-spacer {
+.add-space {
   flex: 1 1 auto;
-}
-
-.side-nav {
-  position: fixed;
-  overflow-y: scroll;
-  top: 64px;
-  bottom: 0;
-  width: 250px;
-  @media only screen and (max-width: 250px) {
-    width: 100%;
-  }
 }
 
 .toolbar {
@@ -19,18 +8,23 @@
   position: fixed;
 }
 
-.example-container {
-}
-
-.example-container-main1 {
-  padding: 15px;
-  height: 100%;
-  overflow: scroll;
-  border: 1px solid #ccc;
-  max-height: calc(100vh - 64px);
-}
-
-.example-container {
+.container {
   position: relative;
   top: 64px;
+}
+
+.container-nav {
+  position: fixed;
+  overflow-y: auto;
+  top: 64px;
+  bottom: 0;
+  width: 250px;
+  @media only screen and (max-width: 250px) {
+    width: 100%;
+  }
+}
+
+.container-main {
+  padding: 2em;
+  background-color: whitesmoke;
 }

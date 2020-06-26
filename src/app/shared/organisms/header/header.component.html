@@ -7,7 +7,7 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span>Greetings Clyde!</span>
-  <span class="example-spacer"></span>
+  <span class="add-space"></span>
   <form style="font-size: medium;">
     <mat-form-field appearance="outline" style="margin-bottom: -1.25em;">
       <span matPrefix
@@ -16,7 +16,7 @@
       <input type="search" matInput />
     </mat-form-field>
   </form>
-  <span class="example-spacer"></span>
+  <span class="add-space"></span>
   <button mat-button [matMenuTriggerFor]="menuProfile">
     <mat-icon>person</mat-icon>
     <span>Clyde Miles</span>
@@ -120,8 +120,8 @@
     </button>
   </mat-menu>
 </mat-toolbar>
-<mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav [mode]="mode.value" class="side-nav">
+<mat-sidenav-container class="container">
+  <mat-sidenav #sidenav mode="side" class="container-nav">
     I'm a drawer
     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
       <!-- This is the tree node template for leaf nodes -->
@@ -149,7 +149,7 @@
     </mat-tree>
   </mat-sidenav>
 
-  <mat-sidenav-content class="example-container-main">
+  <mat-sidenav-content class="container-main">
     <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
     <p>
       <mat-radio-group class="example-radio-group" [formControl]="mode">
