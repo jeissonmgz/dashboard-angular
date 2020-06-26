@@ -1,3 +1,36 @@
 .example-spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.side-nav {
+  position: fixed;
+  overflow-y: scroll;
+  top: 64px;
+  bottom: 0;
+  width: 250px;
+  @media only screen and (max-width: 250px) {
+    width: 100%;
   }
+}
+
+.toolbar {
+  z-index: 2;
+  top: 0;
+  position: fixed;
+}
+
+.example-container {
+}
+
+.example-container-main1 {
+  padding: 15px;
+  height: 100%;
+  overflow: scroll;
+  border: 1px solid #ccc;
+  max-height: calc(100vh - 64px);
+}
+
+.example-container {
+  position: relative;
+  top: 64px;
+}
